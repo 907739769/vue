@@ -1,7 +1,7 @@
 <template>
   <a-card :bordered="false">
     <a-row :gutter="8">
-      <a-col :span="12">
+      <a-col :span="10">
         <!-- 左上父 -->
         <JVxeTable
           toolbar

@@ -10,6 +10,7 @@ enum Api {
   importExcel = '/review/reviewRecord/importExcel',
   exportXls = '/review/reviewRecord/exportXls',
   addCodeReview = '/review/reviewRecord/addCodeReview',
+  addPublishReview = '/review/reviewRecord/addPublishReview',
 }
 /**
  * 导出api
@@ -71,5 +72,14 @@ export const saveOrUpdate = (params, isUpdate) => {
  */
 export const addCodeReview = (params) => {
   let url = Api.addCodeReview;
+  return defHttp.post({url: url, data: params});
+}
+
+/**
+ * 初始化上线评审记录
+ * @param params
+ */
+export const addPublishReview = (params) => {
+  let url = Api.addPublishReview;
   return defHttp.post({url: url, data: params});
 }

@@ -220,7 +220,7 @@ export const reviewCodeChecklistResultColumns: JVxeColumn[] = [
     title: '检查分组',
     key: 'checkGroup',
     type: JVxeTypes.normal,
-    width: '200px',
+    width: '150px',
     placeholder: '请输入${title}',
     defaultValue: '',
     componentProps: {
@@ -230,8 +230,8 @@ export const reviewCodeChecklistResultColumns: JVxeColumn[] = [
   {
     title: '序号',
     key: 'seqNo',
-    type: JVxeTypes.normal,
-    width: '200px',
+    type: JVxeTypes.hidden,
+    width: '20px',
     placeholder: '请输入${title}',
     defaultValue: '',
   },
@@ -239,7 +239,7 @@ export const reviewCodeChecklistResultColumns: JVxeColumn[] = [
     title: '确认项目',
     key: 'checkTitle',
     type: JVxeTypes.normal,
-    width: '200px',
+    width: '120px',
     placeholder: '请输入${title}',
     defaultValue: '',
   },
@@ -255,7 +255,7 @@ export const reviewCodeChecklistResultColumns: JVxeColumn[] = [
     title: '检查结果',
     key: 'problemStatus',
     type: JVxeTypes.select,
-    width: '200px',
+    width: '100px',
     placeholder: '请输入${title}',
     defaultValue: '',
     options: [

@@ -44,7 +44,7 @@
   import ReviewRecordModal from './modules/ReviewRecordModal.vue';
   import ReviewCodeModal from '../code/modules/ReviewCodeModal.vue';
   import { columns, searchFormSchema } from './ReviewRecord.data';
-  import { list, deleteOne, batchDelete, getImportUrl, getExportUrl, addCodeReview } from './ReviewRecord.api';
+  import { list, deleteOne, batchDelete, getImportUrl, getExportUrl, addCodeReview, addPublishReview } from './ReviewRecord.api';
   import { assignWith } from 'lodash-es';
   import { useRouter } from 'vue-router';
   const router = useRouter();
@@ -144,13 +144,39 @@
    */
   async function handCodeReview(record: Recordable) {
     //let result = addCodeReview({xqNumber: record.xqNumber,kjxqNum:record.kjxqNum,ittaskNum:record.ittaskNum}, reload);
-    let result = await addCodeReview({ xqNumber: record.xqNumber, kjxqNum: record.kjxqNum, ittaskNum: record.ittaskNum, xqName: record.xqName, systems: record.systems}, reload);
+    let [result] = await Promise.all([
+      addCodeReview(
+        {
+          xqNumber: record.xqNumber,
+          kjxqNum: record.kjxqNum,
+          ittaskNum: record.ittaskNum,
+          xqName: record.xqName,
+          systems: record.systems,
+        },
+        reload
+      ),
+    ]);
     console.log(result, '======>');
     router.push({
       path: '/system/code',
       query: {
-        id: result.id
-      }
+        id: result.id,
+      },
+    });
+  }
+
+  /**
+   * 发起上线评审
+   */
+  async function handPublishReview(record: Recordable) {
+    //let result = addCodeReview({xqNumber: record.xqNumber,kjxqNum:record.kjxqNum,ittaskNum:record.ittaskNum}, reload);
+    let result = await addPublishReview({ xqNumber: record.xqNumber, kjxqNum: record.kjxqNum, ittaskNum: record.ittaskNum, xqName: record.xqName, systems: record.systems }, reload);
+    console.log(result, '======>');
+    router.push({
+      path: '/system/publish',
+      query: {
+        id: result.id,
+      },
     });
     // let record =
     // let param = {
@@ -165,17 +191,6 @@
     //   isUpdate: true,
     //   showFooter: false,
     // });
-  }
-
-  /**
-   * 发起上线评审
-   */
-  function handPublicReview(record: Recordable) {
-    openModal(true, {
-      record,
-      isUpdate: true,
-      showFooter: false,
-    });
   }
 
   /**
@@ -204,7 +219,7 @@
       },
       {
         label: '发起上线评审',
-        onClick: handPublicReview.bind(null, record),
+        onClick: handPublishReview.bind(null, record),
       },
       {
         label: '详情',

@@ -1,23 +1,29 @@
 <template>
   <BasicModal v-bind="$attrs" @register="registerModal" :title="title" @ok="handleSubmit" width="1000px">
-    <BasicForm @register="registerForm" ref="formRef" :labelCol="{ span: 8 }" />
-    <!-- 子表单区域 -->
-    <a-tabs v-model:activeKey="activeKey" @change="handleChangeTabs">
-      <a-tab-pane tab="代码评审明细记录" key="reviewCodeDetail" :forceRender="true">
-        <JVxeTable
-          keep-source
-          resizable
-          ref="reviewCodeDetail"
-          :loading="reviewCodeDetailTable.loading"
-          :columns="reviewCodeDetailTable.columns"
-          :dataSource="reviewCodeDetailTable.dataSource"
-          :maxHeight="300"
-          :rowNumber="true"
-          :rowSelection="true"
-          :toolbar="true"
-        />
-      </a-tab-pane>
-      <a-tab-pane tab="代码评审检查清单检查结果" key="reviewCodeChecklistResult" :forceRender="true">
+  <a-card :bordered="false">
+      <a-row :gutter="8">
+        <a-col :span="12">
+          <BasicForm @register="registerForm" ref="formRef" :labelCol="{ span: 8 }" />
+          <!-- 子表单区域 -->
+          <a-dev v-model:activeKey="activeKey" @change="handleChangeTabs">
+            <a-dev tab="代码评审明细记录" key="reviewCodeDetail" :forceRender="true">
+              <JVxeTable
+                keep-source
+                resizable
+                ref="reviewCodeDetail"
+                :loading="reviewCodeDetailTable.loading"
+                :columns="reviewCodeDetailTable.columns"
+                :dataSource="reviewCodeDetailTable.dataSource"
+                :maxHeight="300"
+                :rowNumber="false"
+                :rowSelection="false"
+                :toolbar="true"
+              />
+            </a-dev>
+          </a-dev>
+        </a-col>
+      <a-col :span="12">
+      <a-dev tab="代码评审检查清单检查结果" key="reviewCodeChecklistResult" :forceRender="true">
         <JVxeTable
           keep-source
           resizable
@@ -25,13 +31,15 @@
           :loading="reviewCodeChecklistResultTable.loading"
           :columns="reviewCodeChecklistResultTable.columns"
           :dataSource="reviewCodeChecklistResultTable.dataSource"
-          :maxHeight="300"
-          :rowNumber="true"
-          :rowSelection="true"
-          :toolbar="true"
+          :maxHeight="812"
+          :rowNumber="false"
+          :rowSelection="false"
+          :toolbar="false"
         />
-      </a-tab-pane>
-    </a-tabs>
+      </a-dev>
+      </a-col>
+      </a-row>
+    </a-card>
   </BasicModal>
 </template>
 

@@ -28,7 +28,7 @@ export const columns: BasicColumn[] = [
    {
     title: '系统名称',
     align:"center",
-    dataIndex: 'system'
+    dataIndex: 'systems'
    },
    {
     title: '评审阶段',
@@ -80,7 +80,7 @@ export const formSchema: FormSchema[] = [
   },
   {
     label: '系统名称',
-    field: 'system',
+    field: 'systems',
     component: 'Input',
   },
   {
