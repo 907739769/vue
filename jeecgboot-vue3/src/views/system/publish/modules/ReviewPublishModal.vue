@@ -1,23 +1,29 @@
 <template>
   <BasicModal v-bind="$attrs" @register="registerModal" :title="title" @ok="handleSubmit" width="1000px">
-      <BasicForm @register="registerForm" ref="formRef"/>
-  <!-- 子表单区域 -->
-      <a-tabs v-model:activeKey="activeKey" @change="handleChangeTabs">
-        <a-tab-pane tab="上线评审明细记录" key="reviewPublishDetail" :forceRender="true">
-            <JVxeTable
-              keep-source
-              resizable
-              ref="reviewPublishDetail"
-              :loading="reviewPublishDetailTable.loading"
-              :columns="reviewPublishDetailTable.columns"
-              :dataSource="reviewPublishDetailTable.dataSource"
-              :maxHeight="300"
-              :rowNumber="true"
-              :rowSelection="true"
-              :toolbar="true"
-              />
-        </a-tab-pane>
-        <a-tab-pane tab="上线评审检查清单检查结果" key="reviewPublishChecklistResult" :forceRender="true">
+  <a-card :bordered="false">
+      <a-row :gutter="8">
+        <a-col :span="12">
+	      <BasicForm @register="registerForm" ref="formRef" :labelCol="{ span: 8 }" />
+	  <!-- 子表单区域 -->
+	      <a-dev v-model:activeKey="activeKey" @change="handleChangeTabs">
+	        <a-dev tab="上线评审明细记录" key="reviewPublishDetail" :forceRender="true">
+	            <JVxeTable
+	              keep-source
+	              resizable
+	              ref="reviewPublishDetail"
+	              :loading="reviewPublishDetailTable.loading"
+	              :columns="reviewPublishDetailTable.columns"
+	              :dataSource="reviewPublishDetailTable.dataSource"
+	              :maxHeight="300"
+	              :rowNumber="false"
+	              :rowSelection="false"
+	              :toolbar="true"
+	              />
+	        </a-dev>
+          </a-dev>
+        </a-col>
+      <a-col :span="12">
+        <a-dev tab="上线评审检查清单检查结果" key="reviewPublishChecklistResult" :forceRender="true">
             <JVxeTable
               keep-source
               resizable
@@ -25,13 +31,15 @@
               :loading="reviewPublishChecklistResultTable.loading"
               :columns="reviewPublishChecklistResultTable.columns"
               :dataSource="reviewPublishChecklistResultTable.dataSource"
-              :maxHeight="300"
-              :rowNumber="true"
-              :rowSelection="true"
-              :toolbar="true"
+              :maxHeight="812"
+              :rowNumber="false"
+              :rowSelection="false"
+              :toolbar="false"
               />
-        </a-tab-pane>
-      </a-tabs>
+        </a-dev>
+      </a-col>
+      </a-row>
+    </a-card>
   </BasicModal>
 </template>
 
