@@ -96,7 +96,7 @@
     const [handleChangeTabs,handleSubmit,requestSubTableData,formRef] = useJvxeMethod(requestAddOrEdit,classifyIntoFormData,tableRefs,activeKey,refKeys);
 
     //设置标题
-    const title = computed(() => (!unref(isUpdate) ? '新增' : '编辑'));
+    const title = computed(() => (!unref(isUpdate) ? '新增' : '评审内容'));
 
     async function reset(){
       await resetFields();

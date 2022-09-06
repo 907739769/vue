@@ -1,6 +1,6 @@
 <template>
   <BasicModal v-bind="$attrs" @register="registerModal" :title="title" @ok="handleSubmit" width="1000px">
-  <a-card :bordered="false">
+  <a-card :bordered="true">
       <a-row :gutter="8">
         <a-col :span="12">
           <BasicForm @register="registerForm" ref="formRef" :labelCol="{ span: 8 }" />
@@ -96,7 +96,7 @@
   const [handleChangeTabs, handleSubmit, requestSubTableData, formRef] = useJvxeMethod(requestAddOrEdit, classifyIntoFormData, tableRefs, activeKey, refKeys);
 
   //设置标题
-  const title = computed(() => (!unref(isUpdate) ? '新增' : '编辑'));
+  const title = computed(() => (!unref(isUpdate) ? '新增' : '评审内容'));
 
   async function reset() {
     await resetFields();

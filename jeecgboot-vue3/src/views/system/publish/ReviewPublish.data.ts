@@ -3,12 +3,14 @@ import { FormSchema } from '/@/components/Table';
 import { rules } from '/@/utils/helper/validator';
 import { render } from '/@/utils/common/renderUtils';
 import { JVxeTypes, JVxeColumn } from '/@/components/jeecg/JVxeTable/types';
+import { readonly } from 'vue';
 //列表数据
 export const columns: BasicColumn[] = [
   {
     title: '需求编号',
     align: 'center',
     dataIndex: 'xqNumber',
+    width: '125px',
   },
   {
     title: '需求名称',
@@ -19,11 +21,13 @@ export const columns: BasicColumn[] = [
     title: '科技需求编号',
     align: 'center',
     dataIndex: 'kjxqNum',
+    width: '160px',
   },
   {
     title: '科技子任务编号',
     align: 'center',
     dataIndex: 'ittaskNum',
+    width: '190px',
   },
   {
     title: '系统名称',
@@ -68,30 +72,48 @@ export const formSchema: FormSchema[] = [
     label: '需求编号',
     field: 'xqNumber',
     component: 'Input',
+    colProps: {
+      span: 12,
+    },
   },
   {
     label: '需求名称',
     field: 'xqName',
     component: 'Input',
+    colProps: {
+      span: 12,
+    },
   },
   {
     label: '科技需求编号',
     field: 'kjxqNum',
     component: 'Input',
+    colProps: {
+      span: 12,
+    },
   },
   {
     label: '科技子任务编号',
     field: 'ittaskNum',
     component: 'Input',
+    colProps: {
+      span: 12,
+    },
   },
   {
     label: '系统名称',
     field: 'systems',
     component: 'Input',
+    colProps: {
+      span: 12,
+    },
   },
   {
     label: '评审阶段',
     field: 'reviewStep',
+    colProps: {
+      span: 12,
+    },
     component: 'JDictSelectTag',
     componentProps: {
       dictCode: 'step_status',
@@ -190,7 +212,7 @@ export const reviewPublishChecklistResultColumns: JVxeColumn[] = [
     title: '检查分组',
     key: 'checkGroup',
     type: JVxeTypes.normal,
-    width: '80px',
+    width: '100px',
     placeholder: '请输入${title}',
     defaultValue: '',
     componentProps: {
@@ -225,7 +247,7 @@ export const reviewPublishChecklistResultColumns: JVxeColumn[] = [
     title: '检查结果',
     key: 'problemStatus',
     type: JVxeTypes.select,
-    width: '100px',
+    width: '90px',
     placeholder: '请输入${title}',
     defaultValue: '',
     options: [

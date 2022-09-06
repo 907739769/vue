@@ -138,7 +138,7 @@
   function getTableAction(record){
        return [
          {
-           label: '编辑',
+           label: '发起评审',
            onClick: handleEdit.bind(null, record),
          }
        ]

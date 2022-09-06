@@ -3,7 +3,7 @@ import { FormSchema } from '/@/components/Table';
 // import { rules } from '/@/utils/helper/validator';
 import { render } from '/@/utils/common/renderUtils';
 import { JVxeTypes, JVxeColumn } from '/@/components/jeecg/JVxeTable/types';
-import { readonly } from "vue";
+import { readonly } from 'vue';
 //列表数据
 export const columns: BasicColumn[] = [
   {

@@ -63,8 +63,8 @@
       formConfig: {
         labelWidth: 120,
         schemas: searchFormSchema,
-        autoSubmitOnEnter: true,
-        showAdvancedButton: true,
+        autoSubmitOnEnter: false,
+        showAdvancedButton: false,
       },
       actionColumn: {
         width: 120,
@@ -147,6 +147,7 @@
     let [result] = await Promise.all([
       addCodeReview(
         {
+          id: record.id,
           xqNumber: record.xqNumber,
           kjxqNum: record.kjxqNum,
           ittaskNum: record.ittaskNum,
@@ -170,7 +171,7 @@
    */
   async function handPublishReview(record: Recordable) {
     //let result = addCodeReview({xqNumber: record.xqNumber,kjxqNum:record.kjxqNum,ittaskNum:record.ittaskNum}, reload);
-    let result = await addPublishReview({ xqNumber: record.xqNumber, kjxqNum: record.kjxqNum, ittaskNum: record.ittaskNum, xqName: record.xqName, systems: record.systems }, reload);
+    let result = await addPublishReview({ id: record.id, xqNumber: record.xqNumber, kjxqNum: record.kjxqNum, ittaskNum: record.ittaskNum, xqName: record.xqName, systems: record.systems }, reload);
     console.log(result, '======>');
     router.push({
       path: '/system/publish',
