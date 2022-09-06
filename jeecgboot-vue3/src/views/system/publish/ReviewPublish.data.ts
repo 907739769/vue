@@ -46,9 +46,9 @@ export const columns: BasicColumn[] = [
     title: '评审人员',
     align: 'center',
     dataIndex: 'reviewMembers',
-    customRender: ({ text }) => {
-      return render.renderDict(text, 'review_members');
-    },
+    // customRender: ({ text }) => {
+    //   return render.renderDict(text, 'review_members');
+    // },
   },
 ];
 //查询数据

@@ -82,6 +82,9 @@
     setModalProps({ confirmLoading: false, showCancelBtn: data?.showFooter, showOkBtn: data?.showFooter });
     isUpdate.value = !!data?.isUpdate;
     if (unref(isUpdate)) {
+      //if (data.record.reviewMembers && !Array.isArray(data.record.reviewMembers)) {
+      //data.record.reviewMembers = data.record.reviewMembers.split(',');
+      //}
       //表单赋值
       await setFieldsValue({
         ...data.record,

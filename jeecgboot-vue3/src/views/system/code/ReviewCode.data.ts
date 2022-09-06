@@ -3,7 +3,9 @@ import { FormSchema } from '/@/components/Table';
 // import { rules } from '/@/utils/helper/validator';
 import { render } from '/@/utils/common/renderUtils';
 import { JVxeTypes, JVxeColumn } from '/@/components/jeecg/JVxeTable/types';
-import { readonly } from 'vue';
+import { readonly, ref, unref } from "vue";
+import { filterMultiDictText } from '/@/utils/dict/JDictSelectUtil.js';
+const dictOptions = ref<any>([]);
 //列表数据
 export const columns: BasicColumn[] = [
   {
@@ -43,9 +45,8 @@ export const columns: BasicColumn[] = [
     title: '评审人员',
     align: 'center',
     dataIndex: 'reviewMembers',
-    customRender: ({ text }) => {
-      return render.renderDict(text, 'review_members');
-    },
+    // customRender: ({ text }) =>//(text ? //filterMultiDictText(dictOptions.value['review_members'], text) : ''),
+    //   (text ? filterMultiDictText(unref(dictOptions)['review_members'],text) : ''),
   },
   {
     title: 'findbugs报告记录',
